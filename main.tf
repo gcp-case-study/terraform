@@ -1,6 +1,6 @@
 provider "google" {
   version = "~> 2.13"
-  region = "${var.region}"
+
 }
 
 data "google_project" "current" {}
