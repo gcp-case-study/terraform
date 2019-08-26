@@ -15,11 +15,6 @@ resource "google_compute_subnetwork" "network-with-private-secondary-ip-ranges" 
   }
 }
 
-resource "google_compute_network" "custom-test" {
-  name                    = "test-network"
-  auto_create_subnetworks = false
-}
-
 #Enabling peering
 resource "google_compute_network_peering" "peering1" {
   name = "peering1"
@@ -33,12 +28,4 @@ resource "google_compute_network_peering" "peering2" {
   peer_network = "${google_compute_network.default.self_link}"
 }
 
-resource "google_compute_network" "default" {
-  name                    = "foobar"
-  auto_create_subnetworks = "false"
-}
 
-resource "google_compute_network" "other" {
-  name                    = "other"
-  auto_create_subnetworks = "false"
-}
