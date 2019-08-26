@@ -1,10 +1,20 @@
 resource "google_compute_firewall" "default" {
+  name    = "test-firewall"
+  network = "${google_compute_network.default.name}"
 
-    name    = "firewall-bpc"
-    network = "default"
+  allow {
+    protocol = "icmp"
+  }
 
-    allow {
-      protocol = "https"
-      ports    = ["80"]
-    }
+  allow {
+    protocol = "tcp"
+    ports    = ["80", "8080", "1000-2000"]
+  }
+
+  source_tags = ["web"]
 }
+
+resource "google_compute_network" "default" {
+  name = "test-network"
+}
+

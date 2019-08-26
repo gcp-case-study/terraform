@@ -1,10 +1,9 @@
-resource "google_storage_bucket" "bucket" {
-  name = "case-study"
-}
+resource "google_storage_bucket" "image-store" {
+  name     = "image-store-bucket"
+  location = "EU"
 
-resource "google_storage_bucket_object" "archive" {
-  name   = "index.zip"
-  bucket = "${google_storage_bucket.bucket.name}"
-  source = "./path/to/zip/file/which/contains/code"
+  website {
+    main_page_suffix = "index.html"
+    not_found_page   = "404.html"
+  }
 }
-
