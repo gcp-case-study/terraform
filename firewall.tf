@@ -1,17 +1,33 @@
-resource "google_compute_firewall" "default" {
-  name    = "test-firewall"
-  network = "${google_compute_network.default.name}"
+resource "google_compute_firewall" "east" {
+  name    = "east-firewall"
+  network = "${google_compute_network.east-vnet}"
 
   allow {
     protocol = "icmp"
   }
 
   allow {
-    protocol = "tcp"
-    ports    = ["80", "8080", "1000-2000"]
+    protocol = "https"
+    ports    = "443"
   }
 
   source_tags = ["web"]
 }
+resource "google_compute_firewall" "midwest" {
+  name    = "midwest-firewall"
+  network = "${google_compute_network.midwest-vnet}"
+
+  allow {
+    protocol = "icmp"
+  }
+
+  allow {
+    protocol = "https"
+    ports    = "443"
+  }
+
+  source_tags = ["web"]
+}
+
 
 
