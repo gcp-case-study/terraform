@@ -21,7 +21,7 @@ resource "google_cloudfunctions_function" "function-pubsub" {
   description           = "Pub/Sub function for clien ABD"
   runtime               = "nodejs10"
 
-  available_memory_mb   = 120
+  available_memory_mb   = 128
   source_archive_bucket = "${google_storage_bucket.bucket.name}"
   source_archive_object = "${google_storage_bucket_object.archive.name}"
   trigger_http          = true
