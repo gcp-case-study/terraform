@@ -1,20 +1,21 @@
-resource "google_bigquery_dataset" "default" {
-  dataset_id                  = "foo"
-  friendly_name               = "test"
-  description                 = "This is a test description"
+resource "google_bigquery_dataset" "bigquery" {
+  dataset_id                  = "ABD-client"
+  friendly_name               = "ABC dataset"
+  description                 = "Big Query analytics for Client ABC"
   location                    = "EU"
   default_table_expiration_ms = 3600000
 
   labels = {
-    env = "default"
+    env = "bigquery"
   }
 
   access {
     role   = "READER"
-    domain = "example.com"
+    domain = "abd.com"
   }
   access {
     role           = "WRITER"
-    group_by_email = "writers@example.com"
+    group_by_email = "writers@abd.com"
   }
 }
+
