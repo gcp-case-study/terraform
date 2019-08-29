@@ -1,21 +1,26 @@
-# create bucket
-resource "google_storage_bucket" "image-store" {
-  name     = "weet-bucket" # required
+provider "google" {
+  credentials = "${file("account.json")}"
+  project     = "my-project-id"
+  region      = "us-central1"
+}
+
+# create bucker for logging
+resource "google_storage_bucket" "logs" {
+  name = "logs-bucket"
   location = "US"
-  storage_class = "MULTI_REGIONAL"
-  lifecycle_rule {
-      action { # required for lifecycle_rule block
-          type = "delete or SetStorageClass"
-          storage_class = "MULTI_REGIONAL" # required if action = "SetStorageClass"
-      }
-      condition { # required for lifecycle_rule block
-          matches_storage_class = "MULTI_REGIONAL" # at least one element is required for condition
-      } 
-  }
-  website {
-    main_page_suffix = "WEBSITE_DOMAIN"
-  }
-  versioning {
-      enabled = "true"
-  }     
+  storage_class = "NEARLINE" # 30 day minimum storage duration
+    }
+
+# create bucket for coldline storage
+resource "google_storage_bucket" "cold" {
+  name     = "cold-bucket" 
+  location = "US"
+  storage_class = "COLDLINE"
+}
+
+# create bucket for csv file
+resource "google_storage_bucket" "csv-storage" {
+  name = "csv-bucket"
+  location = "US"
+  matches_storage_class = "STANDARD" # best for accessing data frequently
 }
