@@ -17,3 +17,4 @@ resource "google_cloudfunctions_function" "function" {
     MY_ENV_VAR = "my-env-var-value"
   }
 }
+
