@@ -1,8 +1,4 @@
-provider "google" {
-  credentials = "${file("account.json")}"
-  project     = "my-project-id"
-  region      = "us-central1"
-}
+
 
 # create bucket
 resource "google_storage_bucket" "image-store" {

@@ -8,7 +8,11 @@ resource "google_compute_firewall" "east" {
 
   allow {
     protocol = "https"
-    ports    = "443"
+    ports    = ["443"]
+  }
+  allow {
+    protocol = "http"
+    ports    = ["80"]
   }
 
   source_tags = ["web"]
@@ -23,9 +27,12 @@ resource "google_compute_firewall" "midwest" {
 
   allow {
     protocol = "https"
-    ports    = "443"
+    ports    = ["443"]
   }
-
+  allow {
+    protocol = "http"
+    ports    = ["80"]
+  }
   source_tags = ["web"]
 }
 

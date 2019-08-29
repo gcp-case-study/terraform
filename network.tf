@@ -72,8 +72,8 @@ resource "google_compute_subnetwork" "us-midwest-subnet-three" {
 
 #Enabling peering
 resource "google_compute_network_peering" "region-peering" {
-  name = "region-peering"
-  network = "${google_compute_network.east-vnet.east}"
+  name         = "region-peering"
+  network      = "${google_compute_network.east-vnet}"
   peer_network = "${google_compute_network.midwest-vnet}"
 }
 

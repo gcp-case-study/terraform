@@ -1,7 +1,5 @@
 provider "google" {
   version = "~> 2.13"
+  project     = "my-project-id"
+  region      = "us-central1"
 }
-
-data "google_project" "current" {}
-
-data "google_compute_default_service_account" "default" {}
