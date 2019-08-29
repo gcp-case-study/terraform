@@ -31,3 +31,4 @@ resource "google_cloudfunctions_function" "function-pubsub" {
     my-label = "my-pub/sub"
   }
 }
+
