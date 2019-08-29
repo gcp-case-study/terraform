@@ -14,6 +14,10 @@ resource "google_compute_firewall" "east" {
     protocol = "http"
     ports    = ["80"]
   }
+  allow {
+    protocol = "ssh"
+    ports    = ["22"]
+  }
 
   source_tags = ["web"]
 }
@@ -32,6 +36,10 @@ resource "google_compute_firewall" "midwest" {
   allow {
     protocol = "http"
     ports    = ["80"]
+  }
+  allow {
+    protocol = "ssh"
+    ports    = ["22"]
   }
   source_tags = ["web"]
 }
