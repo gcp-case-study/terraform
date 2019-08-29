@@ -1,6 +1,5 @@
 provider "google" {
   version = "~> 2.13"
-
 }
 
 data "google_project" "current" {}
