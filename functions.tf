@@ -1,6 +1,6 @@
-resource "google_cloudfunctions_function" "function" {
-  name                  = "function-test"
-  description           = "My function"
+resource "google_cloudfunctions_function" "function-IoT" {
+  name                  = "function-IoT"
+  description           = "Digest function for clien ABD"
   runtime               = "nodejs10"
 
   available_memory_mb   = 128
@@ -8,12 +8,12 @@ resource "google_cloudfunctions_function" "function" {
   source_archive_object = "${google_storage_bucket_object.archive.name}"
   trigger_http          = true
   timeout               = 60
-  entry_point           = "helloGET"
+  entry_point           = "index.js"
   labels = {
-    my-label = "my-label-value"
+    my-label = "my-lab"
   }
 
-  environment_variables = {
-    MY_ENV_VAR = "my-env-var-value"
-  }
+  //environment_variables = {
+    //MY_ENV_VAR = "my-env-var-value"
+  //}
 }

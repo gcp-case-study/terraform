@@ -1,5 +1,3 @@
-
-
 # create bucket
 resource "google_storage_bucket" "image-store" {
   name     = "weet-bucket" # required
