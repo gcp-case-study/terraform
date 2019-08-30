@@ -1,19 +1,10 @@
 
+# create admin role
 data "google_iam_policy" "admin" {
-# create role for compute admin
-  binding { # required for google_iam_policy
+  binding { 
     role = "roles/compute.admin" 
-  
     members = [ 
       "user:tekken7jinkazama09@gmail.com",
-    ]
-  }
-# create role for compute_instance
-  binding {
-    role = "roles/compute.instanceAdmin" # Permissions to create, modify, 
-    # and delete virtual machine instances
-    members = [
-      "user:tekken7jinkazama09@gmail.com"
     ]
   }
 
@@ -38,13 +29,6 @@ data "google_iam_policy" "admin" {
     binding {
       role = "roles/compute.orgSecurityPolicyAdmin" # Full control of Compute 
 # Engine Organization Security Policies
-      members = [
-        "user:tekken7jinkazama09@gmail.com"
-      ]
-    }
-# create role for storage admin
-    binding {
-      role = "roles/compute.storageAdmin"
       members = [
         "user:tekken7jinkazama09@gmail.com"
       ]
