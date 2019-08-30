@@ -1,9 +1,3 @@
-provider "google" {
-  credentials = "${file("account.json")}"
-  project     = "my-project-id"
-  region      = "us-central1"
-}
-
 # create bucker for logging
 resource "google_storage_bucket" "logs" {
   name = "logs-bucket"
