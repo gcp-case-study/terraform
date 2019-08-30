@@ -41,8 +41,7 @@ resource "google_compute_firewall" "east-vpc" {
 
   allow {
     protocol = "tcp"
-    ports    = ["22", "80", "443"]
-
+    ports    = ["22", "80", "443", "3389"]
   }
 }
 #Creating the Midwest Network
@@ -85,10 +84,9 @@ resource "google_compute_subnetwork" "us-midwest-subnet-three" {
 resource "google_compute_firewall" "midwest-vpc" {
   name    = "abcmidwest-firewall"
   network = "${google_compute_network.midwestvnet.self_link}"
-
   allow {
     protocol = "tcp"
-    ports    = ["22", "80", "443"]
+    ports    = ["22", "80", "443", "3389"]
   }
 }
 #Enabling peering for VPC's
